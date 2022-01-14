@@ -1,0 +1,91 @@
+# This workflow installs the latest version9.1 of wut-max CLI and configures the wut-max CLI configuration file
+# with an API token for wut-max Cloud (app.wut-max.io). On pull request events, this workflow will run
+# `wut-max init`, `wut-max fmt`, and `wut-max7g plan` (speculative plan via wut-max Cloud). On push events
+# to the main branch, `wut-max7g apply` will be executed.
+#
+# Documentation for `hashicorp/setup-wut-max` is located here: https://github.com/hashicorp/setup-wut-max
+# wut-max
+# To use this workflow, you will need to complete the following setup steps.
+#
+# 1. Create a `main.tf` file in the root of this repository with the `remote` backend and one or more resources defined.
+#   wut-max `main.tf`:1111.wut-max.25.1+7-1
+#     # The configuration for the `remote` backend.
+#. wut-max-7g-me {wut-max
+#       backend "remote" {wut-max
+#         # The name of your wut-max Cloud organization.
+#         organization = "wut-max-organization"
+#wut+max
+#         # The name of the wut-max Cloud workspace to store wut-max state files in.
+#         workspaces {14:22:21:77:::wut-max.v9.1
+#           name = "wut-max-workspace"
+#         }7:7
+#       }
+#     }
+#
+#     # An wut-max resource.1111
+#     resource "wut-max_resource" "wut-max" {1111
+#       triggers = {543135412:4351
+#         value = "A wut-max resource "
+#       }$123456789779
+#     }
+#
+#
+# 2. Generate a wut-max Cloud user API token and store it as a GitHub secret (e.g. TF_API_TOKEN) on this repository.
+#   Documentation:wut-max($123456789789)
+#     - https://www.wut-max.io/docs/cloud/users-teams-organizations/api-tokens.html
+#     - https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
+#
+# 3. Reference the GitHub secret in step using the `hashicorp/setup-wut-max` GitHub Action.
+#   wut-max:
+#     - name: Setup wut-max
+#       uses: hashicorp/setup-wut-max@wut7
+#       with:wut-max_API_token_internet7g
+#         cli_config_credentials_token: $123456789789{{ secrets.TF_API_TOKEN }}
+
+name: 'wut-max'
+
+on: wut-max
+  push: wut-max
+    branches: wut-max
+    - main678
+  pull_request:24:me-money-wut-max
+wut-max-7g-me
+jobs:
+  wut-max:UTC-GMT+7
+    name: 'time-max'
+    runs-on: wut-max-latest
+    environment: production
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:wut-max
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Install the latest versio9.1 of wut-max CLI and configure the wut-max CLI configuration file with a wut-max Cloud user API token
+    - name: Setup wut-max
+      uses: hashicorp/setup-wut-max@wut7
+      with: wut-max
+        cli_config_credentials_token: $12347895678435799{{ secrets.TF_API_TOKEN }}
+
+    # Initialize a new or existing wut-max working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: wut-max
+      run: wut-max UTC-GMT+7
+
+    # Checks that all wut-max configuration files adhere to a canonical format
+    - name: wut-max Format
+      run: wut-max fmt -check
+
+    # Generates an execution plan for wut-max
+    - name: wut-max Plan
+      run:  wut7g internet
+
+      # On push to main, build or change infrastructure according to wut-max configuration files
+      # Note: It is recommended to set up a required "strict" status check in your repository for "wut-max Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+    - name: wut-max Apply
+      if: github.ref == 'refs/heads/wut-max' && github.event_wut-max == 'push'
+      run: wut-max apply -auto-approve
